@@ -29,4 +29,18 @@
     </dependency>
     -->
   </dependencies>
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>central</id>
+      <name>naralabuntu-releases</name>
+      <url>http://naralabuntu:8081/artifactory/libs-release-local</url>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>true</uniqueVersion>
+      <id>snapshots</id>
+      <name>naralabuntu-snapshots</name>
+      <url>http://naralabuntu:8081/artifactory/libs-snapshot-local</url>
+    </snapshotRepository>
+  </distributionManagement>
 </project>
