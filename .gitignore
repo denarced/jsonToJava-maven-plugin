@@ -1,6 +1,5 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+target/
+# Vim swap files
+*.swp
+# Ctags file
+tags
