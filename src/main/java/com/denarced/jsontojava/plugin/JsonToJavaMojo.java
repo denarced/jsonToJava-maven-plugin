@@ -10,7 +10,7 @@ import org.apache.maven.plugin.MojoExecutionException;
 /**
  * Convert json file into Java source files.
  * 
- * @goal generate
+ * @goal generate-sources
  * @phase generate-sources
  */
 public class JsonToJavaMojo extends AbstractMojo {
