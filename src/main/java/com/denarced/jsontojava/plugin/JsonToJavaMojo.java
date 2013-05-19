@@ -16,21 +16,21 @@ import org.apache.maven.plugin.MojoExecutionException;
 public class JsonToJavaMojo extends AbstractMojo {
     /**
      * @parameter
-     *   expression="${package}"
+     *   expression="${generage.package}"
      *   default-value="com.example"
      */
     private String _package;
     
     /**
      * @parameter
-     *   expression="${output}"
+     *   expression="${generate.output}"
      *   default-value="target/gen"
      */
     private String _output;
 
     /**
      * @parameter
-     *   expression="${filepath}"
+     *   expression="${generate.filepath}"
      */
     private File _jsonFile;
 
