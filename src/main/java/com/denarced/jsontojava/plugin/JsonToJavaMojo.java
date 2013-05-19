@@ -31,6 +31,7 @@ public class JsonToJavaMojo extends AbstractMojo {
     /**
      * @parameter
      *   expression="${generate.filepath}"
+     *   @required
      */
     private File _jsonFile;
 

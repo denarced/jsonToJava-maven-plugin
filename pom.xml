@@ -4,8 +4,7 @@
   <groupId>com.denarced</groupId>
   <artifactId>jsonToJava-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>0.0.2</version>
-  <name>jsonToJava-maven-plugin</name>
+  <version>0.0.3</version>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -18,29 +17,21 @@
     <dependency>
       <groupId>com.denarced</groupId>
       <artifactId>json-to-java</artifactId>
-      <version>0.0.2</version>
+      <version>0.0.3</version>
     </dependency>
-    <!--
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    -->
   </dependencies>
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
       <id>central</id>
       <name>naralabuntu-releases</name>
-      <url>http://naralabuntu:8081/artifactory/libs-release-local</url>
+      <url>http://naralabuntu:8081/artifactory/plugins-release-local</url>
     </repository>
     <snapshotRepository>
       <uniqueVersion>true</uniqueVersion>
       <id>snapshots</id>
       <name>naralabuntu-snapshots</name>
-      <url>http://naralabuntu:8081/artifactory/libs-snapshot-local</url>
+      <url>http://naralabuntu:8081/artifactory/plugins-snapshot-local</url>
     </snapshotRepository>
   </distributionManagement>
 </project>
