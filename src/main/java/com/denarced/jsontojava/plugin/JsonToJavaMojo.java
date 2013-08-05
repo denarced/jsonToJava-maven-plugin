@@ -30,10 +30,16 @@ public class JsonToJavaMojo extends AbstractMojo {
      */
     private File jsonFile;
 
+    /**
+     * @parameter default-value=false
+     */
+    private boolean generateStatic;
+
     public void execute() throws MojoExecutionException {
         if (jsonFile != null) {
             JavaFileWriter writer = new ClassWriter(targetPackage, output);
             JsonToJava toJava = new JsonToJava(writer);
+            toJava.setGenerateStatic(generateStatic);
             toJava.parse(jsonFile);
         }
     }
