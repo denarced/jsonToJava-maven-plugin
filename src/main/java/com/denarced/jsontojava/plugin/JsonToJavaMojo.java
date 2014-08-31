@@ -1,11 +1,10 @@
 package com.denarced.jsontojava.plugin;
 
-import com.denarced.jsontojava.JavaFileWriter;
-import com.denarced.jsontojava.ClassWriter;
-import com.denarced.jsontojava.JsonToJava;
-import java.io.File;
+import com.denarced.jsontojava.*;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
+
+import java.io.*;
 
 /**
  * Convert json file into Java source files.
@@ -30,17 +29,32 @@ public class JsonToJavaMojo extends AbstractMojo {
      */
     private File jsonFile;
 
-    /**
-     * @parameter default-value=false
-     */
-    private boolean generateStatic;
-
     public void execute() throws MojoExecutionException {
         if (jsonFile != null) {
-            JavaFileWriter writer = new ClassWriter(targetPackage, output);
-            JsonToJava toJava = new JsonToJava(writer);
-            toJava.setGenerateStatic(generateStatic);
-            toJava.parse(jsonFile);
+            InputStream json = null;
+            try {
+                json = new FileInputStream(jsonFile);
+            } catch (FileNotFoundException e) {
+                throw new MojoExecutionException("Creating stream from jsonFile threw.", e);
+            }
+            String rootClassName = "Root";
+
+            String targetDirectory = output;
+            PrintStream output = null;
+            try {
+                output = JavaFileOutputFactory.create(
+                    rootClassName,
+                    targetDirectory);
+            } catch (IOException e) {
+                throw new MojoExecutionException("IOException ...", e);
+            }
+
+            Parser parser = new JsonFileParser(json);
+            JsonObject jsonObject = new JsonObject(rootClassName);
+            parser.parse(jsonObject);
+            JavaClassWriter javaClassWriter = new JavaClassWriterImpl(output);
+            javaClassWriter.setTargetPackage(targetPackage);
+            jsonObject.printInto(javaClassWriter);
         }
     }
 }
